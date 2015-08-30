@@ -1,0 +1,42 @@
+alzheimer 0.9
+
+This kernel module erases all the available 
+physical memory (RAM) when loaded.
+This of course leads to machine "crash" (actually infinite loop).
+Use ipmi to restart your server after module is loaded.
+
+Purpose of this module is to prevent physical attacks against RAM. 
+Find some events (such as connectivity loss,
+cover open, ...) and hook this module on them.
+When such event occurs, RAM is immediately erased.
+Assuming that you are using full disk encryption
+with strong cryptographic algorithm, there 
+should be (almost;) no way to get your data.
+
+Tested on i386 and x86_64, feel free to port it on 
+different architecture. XXX Multiprocesor systems may not work XXX
+
+If you want to test if it really works,
+easiest way is probably using qemu + gdb.
+ 
+Under GNU GPL.
+
+Bug reports and patches welcome.
+
+2010, niekt0@hysteria.sk
+
+-----
+Usage:
+
+$ make
+
+To delete memory:
+
+# insmod alzheimer.ko
+(good bye;)
+
+You will probably want to hook deleting to some event.
+Script hook.sh is generic hook to connectivity loss,
+modify it as you need.
+
+n.
