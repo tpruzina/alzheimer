@@ -23,7 +23,6 @@
 #include <linux/bootmem.h>
 #include <linux/splice.h>
 #include <linux/pfn.h>
-#include <linux/smp_lock.h>
 #include <linux/reboot.h>
 #include <asm/reboot.h>
 
